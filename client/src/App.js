@@ -1,11 +1,10 @@
 // dependancies 
 import React from 'react';
 import './App.css';
-// redux
+    // redux
 import { Provider } from "react-redux";
 import store from "./store";
-
-// chat component
+    // chat component
 import Chat from "./components/chat/Chat";
 
 // connect app to redux 
@@ -14,6 +13,7 @@ const App = () => {
     <Provider store={store}>
       <div className="App">
           <Chat />
+           {console.log("in app.js")}
       </div>
     </Provider>
   );

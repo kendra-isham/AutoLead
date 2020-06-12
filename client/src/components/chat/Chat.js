@@ -19,8 +19,14 @@ const Chat = ({chat, userMessage}) => {
     };
 
     return (
-        <div className = "chat">
-            <h1>Modem Chat</h1>
+        <div className="chat">
+          <h1>Modem Chat</h1>
+
+            {/* Handle Messages */}
+            {chat.length === 0 ? ""
+            : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.message}</div>)}
+
+            {/* get messages */}
             <div>Put your question here</div>
             <input id = "chatbox" 
                 onChange={(e) => setMessage(e.target.value)}
@@ -29,10 +35,11 @@ const Chat = ({chat, userMessage}) => {
             />
         </div>
     )
+    
 };
 
 const mapStateToProps = (state) => ({
-    Chat: state.watson.messages,
+    chat: state.watson.messages
 });
 
 // export 

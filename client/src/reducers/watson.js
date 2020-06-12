@@ -15,7 +15,7 @@ export default (state=initialState, action) => {
     switch(type){
         case INPUT_SUCCESS: 
             messages = [...messages, { message:payload, type:"user" }];
-            console.log("inside switch");
+            console.log("inside switch input success");
             return {
                 ...state,
                 messages,
