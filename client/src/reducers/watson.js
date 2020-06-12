@@ -1,5 +1,7 @@
 // import types
-import { INPUT_SUCCESS, INPUT_FAIL } from "../actions/types";
+import { INPUT_SUCCESS, INPUT_FAIL,
+         SESSION_SUCCESS, SESSION_FAIL,
+         MESSAGE_SUCCESS, MESSAGE_FAIL } from "../actions/types";
 
 // set initial state to message que
 const initialState = {
@@ -21,6 +23,17 @@ export default (state=initialState, action) => {
                 messages,
             };
         case INPUT_FAIL:
+            return {
+                ...state,
+            };
+        case SESSION_SUCCESS:
+            //stores session ID in localStorage in browser
+            localStorage.setItem("session", payload["session_id"]);
+            console.log("inside switch session success");
+            return {
+                ...state,
+            };
+        case SESSION_FAIL: 
             return {
                 ...state,
             };

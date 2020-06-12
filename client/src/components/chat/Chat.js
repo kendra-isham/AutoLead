@@ -24,10 +24,9 @@ const Chat = ({chat, userMessage}) => {
 
             {/* Handle Messages */}
             {chat.length === 0 ? ""
-            : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.message}</div>)}
+            : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.type}: {msg.message}</div>)}
 
             {/* get messages */}
-            <div>Put your question here</div>
             <input id = "chatbox" 
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleClick}
