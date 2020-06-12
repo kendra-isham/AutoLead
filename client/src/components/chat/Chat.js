@@ -32,7 +32,7 @@ const Chat = ({chat, userMessage}) => {
 };
 
 const mapStateToProps = (state) => ({
-    chat: state.watson.messages,
+    chat: state.messages,
 });
 
 // export 
