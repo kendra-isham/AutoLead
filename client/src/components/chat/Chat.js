@@ -12,7 +12,7 @@ const Chat = ({chat, userMessage}) => {
     const handleClick = async(e) => {
         const code = e.keyCode || e.which;
         if(code === 13){
-            console.log(message);
+            console.log(message + " in click event");
             userMessage(message);
             setMessage("");
         };
@@ -32,7 +32,7 @@ const Chat = ({chat, userMessage}) => {
 };
 
 const mapStateToProps = (state) => ({
-    chat: state.messages,
+    Chat: state.watson.messages,
 });
 
 // export 
