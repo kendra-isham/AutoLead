@@ -1,19 +1,20 @@
 // dependencies 
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { userMessage } from "../../actions/watson";
+import { userMessage, sendMessage } from "../../actions/watson";
 
-const Chat = ({chat, userMessage}) => {
-    //allows variable to grab message from user
+const Chat = ({chat, userMessage, sendMessage}) => {
+    // allows variable to grab message from user
     const [message, setMessage] = useState("");
 
-    //will submit user message to api 
-    //will only check if user presses enter
+    // will submit user message to api 
+    // will only check if user presses enter
     const handleClick = async(e) => {
         const code = e.keyCode || e.which;
         if(code === 13){
             console.log(message + " in click event");
             userMessage(message);
+            sendMessage(message);
             setMessage("");
         };
     };
@@ -42,4 +43,4 @@ const mapStateToProps = (state) => ({
 });
 
 // export 
-export default connect(mapStateToProps, {userMessage})(Chat);
+export default connect(mapStateToProps, {userMessage, sendMessage})(Chat);

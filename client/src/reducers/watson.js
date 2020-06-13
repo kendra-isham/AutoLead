@@ -1,7 +1,8 @@
 // import types
 import { INPUT_SUCCESS, INPUT_FAIL,
-         SESSION_SUCCESS, SESSION_FAIL,
-         MESSAGE_SUCCESS, MESSAGE_FAIL } from "../actions/types";
+         SESSION_SUCCESS, SESSION_FAIL, 
+         MESSAGE_SUCCESS, MESSAGE_FAIL,
+        } from "../actions/types";
 
 // set initial state to message que
 const initialState = {
@@ -27,13 +28,24 @@ export default (state=initialState, action) => {
                 ...state,
             };
         case SESSION_SUCCESS:
-            //stores session ID in localStorage in browser
+            // stores session ID in localStorage in browser
             localStorage.setItem("session", payload["session_id"]);
             console.log("inside switch session success");
             return {
                 ...state,
             };
         case SESSION_FAIL: 
+            return {
+                ...state,
+            };
+        case MESSAGE_SUCCESS:
+            messages = [...messages, {message:payload, type:"bot"}];
+            return {
+                ...state,
+                messages,
+            };
+        case MESSAGE_FAIL: 
+            console.log("idk look it up in copilot");
             return {
                 ...state,
             };

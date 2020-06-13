@@ -1,7 +1,8 @@
-//import types
+// import types
 import { INPUT_SUCCESS, INPUT_FAIL,
          SESSION_SUCCESS, SESSION_FAIL,
-         MESSAGE_SUCCESS, MESSAGE_FAIL } from "./types";
+         MESSAGE_SUCCESS, MESSAGE_FAIL,
+        } from "./types";
 import axios from "axios";
 
 // handles user message 
@@ -14,16 +15,27 @@ export const userMessage = (message) => async (dispatch) => {
     };
 };
 
-// creates a session 
-// aka api call to backend 
+// GET a session 
 export const createSession = () => async (dispatch) => {
     try{
-        const res = await axios.get("http://localhost:5000/watson/session");
+        console.log("in createSession");
+        const res = await axios.get("/watson/session");
         dispatch({type: SESSION_SUCCESS, payload: res.data});
     }catch(err){
         dispatch({type: SESSION_FAIL});
     }
 };
 
-// sends message to the bot API call 
+// POST message to the bot 
+export const sendMessage = message => async (dispatch) => {
+    try{
+        console.log("in createMessage");
+        const body = {input:message};
+        const res = axios.post("/watson/message", body);
+        dispatch({type: MESSAGE_SUCCESS, payload: (await res).data.output.generic[0].text});
+        console.log(res);
+    }catch(err){
+        dispatch({type: MESSAGE_FAIL});
+    }
+}
 
