@@ -20,9 +20,7 @@ TODO:
     --- (if time) display most commonly asked about modem types and questions (ie entities and intents)
 --- infinite scroll in the div instead of scrolling the whole page when too many questions are asked 
 --- fix issue with not getting sessionID upon first launch of server and having to refresh page. **I have no clue how to do this. 
+--- set up hosting with heroku 
 
 How to run: 
---- node 12.18.0 
---- npm install 
---- npm run dev 
---- when localhost:3000 starts, please refresh.... it's not a bug it's a feature
+--- will have to be hosted unless i share api key info i think
