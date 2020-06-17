@@ -10,6 +10,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 const intitialState = {};
 
 // get middleware (thunk)
+// allows for async calls
 const middleware = [thunk];
 
 // set up store 

@@ -9,3 +9,13 @@ export const SESSION_FAIL = "SESSION_FAIL";
 //messages
 export const MESSAGE_SUCCESS = "MESSAGE_SUCCESS";
 export const MESSAGE_FAIL = "MESSAGE_FAIL";
+
+//pID received 
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_SUCCESS";
+
+//login 
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_SUCCESS";
+export const LOAD_USER = "LOAD_USER";
+export const AUTH_ERROR = "AUTH_ERROR";
