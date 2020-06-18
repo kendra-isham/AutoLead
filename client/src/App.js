@@ -21,9 +21,10 @@ const App = () => {
 
   // creates session
   // useEffect assists in creating session upon refresh
-  useEffect(() => {
+  // this was commented out to see if it fixes the intermittent message_fail error upon load
+  //useEffect(() => {
       store.dispatch(createSession());
-  });
+  //});
 
 
   return (

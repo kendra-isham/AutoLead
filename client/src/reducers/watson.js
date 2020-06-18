@@ -34,7 +34,8 @@ export default (state=initialState, action) => {
             return {
                 ...state,
             };
-        case SESSION_FAIL: 
+        case SESSION_FAIL:
+            alert("SESSION_FAIL: Please refresh the page"); 
             return {
                 ...state,
             };
@@ -45,7 +46,7 @@ export default (state=initialState, action) => {
                 messages,
             };
         case MESSAGE_FAIL: 
-            console.log("idk look it up in copilot");
+            alert("MESSAGE_FAIL: Please refresh the page");
             return {
                 ...state,
             };

@@ -8,6 +8,7 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    text-align: center;
 }
 
 .user, .bot {
@@ -37,7 +38,6 @@
 
 .historyContainer {
     padding-bottom: 5em;
-    
 }
 
 #chatbox {

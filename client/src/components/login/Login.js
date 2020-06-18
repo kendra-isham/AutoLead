@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { login } from "../../actions/login";
 
-const Login = ({login}) => {
+const Login = ({pID, login}) => {
+    // allows variable to grab message from user 
+    const[pID, setPID] = useState("");
 
-    let[data, setData] = useState({
-        pID: ""
-    });
-
-    onChange = e => {
-        setData({ ...data, [e.target.name]: e.target.value}); 
+    const handleClick = async(e) => {
+        const code = e.keyCode || e.which;
+        if(code === 13){
+            console.log(pID + " in click event");
+            login(pID);
+            setPID("");
+        };
     };
-
-    const submitData = () => {
-        console.log(data);
-    }
-
-    //gives us access to the pID 
-    let {pID} = data;
-
-    return(
-        <div className="Login">
-            <label onChange ={(e) => onChange(e)} value={pID} name="pID">pID: </label>
-            <input type="username"/>
-            <button onClick={() => submitData()}>Submit</button>
+    return (
+        <div className="login">
+          <h1>Modem Chat</h1>
+          <h5>Please Enter your PID</h5>
+          
+            <div className="loginBox">
+               <input id = "pID" 
+                onChange={(e) => setPID(e.target.value)}
+                onKeyPress={handleClick}
+                value={pID}
+                />
+            </div>
         </div>
-    );
+    )
+    
 };
 
-// const mapStateToProps = (state) => ({
-//     login: state.????
-// });
+const mapStateToProps = (state) => ({
+    login: state.login.loggedIn
+});
 
-// // export 
-// export default connect(mapStateToProps, {})(Login);
+
+// export 
+export default connect(mapStateToProps, {login})(Login);

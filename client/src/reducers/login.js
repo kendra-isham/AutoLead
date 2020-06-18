@@ -1,23 +1,33 @@
-// import types
-import { REGISTER_SUCCESS, REGISTER_FAIL,
-        LOGIN_SUCCESS, LOGIN_FAIL,
-        LOAD_USER, AUTH_ERROR,
-        } from "../actions/types";
+import { SIGN_IN_SUCCESS, SIGN_IN_FAIL
+   } from "../actions/types";
 
-
+// set initial state to message que
 const initialState = {
-    token: localStorage.gitItem("token"),
-    ableToLogin : false,
-    error: {}
-}
+    loggedIn : false
+};
 
-const login = (state=initialState) => {
-    const {type, payload} = action;
-    switch(type){
-
+export default (state=initialState, action) => {
+    const {payload} = action;
+    //console.log(action);
+    let {loggedIn} = state;
+    switch(action.type){
+        case SIGN_IN_SUCCESS:
+            loggedIn = [true, {loggedIn: payload}];
+            console.log("YOU ARE SIGNED IN");
+            return {
+                state,
+                loggedIn
+            }
+        case SIGN_IN_FAIL:
+            loggedIn = false;
+            console.log("YOU ARE NOT SIGNED IN");      
+            return {
+                state,
+                loggedIn
+            }
         default: 
-            return state;
-    }
-} 
+            return state
+    };
+};
 
-export default login;
+//export default isLogged;

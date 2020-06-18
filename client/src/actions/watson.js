@@ -36,6 +36,6 @@ export const sendMessage = message => async (dispatch) => {
         console.log(res);
     }catch(err){
         dispatch({type: MESSAGE_FAIL});
-    }
-}
+    };
+};
 

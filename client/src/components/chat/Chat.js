@@ -22,11 +22,16 @@ const Chat = ({chat, userMessage, sendMessage}) => {
     return (
         <div className="chat">
           <h1>Modem Chat</h1>
-
-            {/* Handle Messages */}
-            {chat.length === 0 ? ""
-            : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.type}: {msg.message}</div>)}
-
+          <h5>Please reference the model number for the modem in question.</h5>
+          <h6>Ex: "Does the DG1670 have wifi?</h6>
+          
+            <div className="historyContainer">
+                {/* Handle Messages */}
+                <div className="maxHeight">
+                    {chat.length === 0 ? ""
+                    : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.type}: {msg.message}</div>)}
+                </div>
+            </div>
             {/* get messages */}
             <input id = "chatbox" 
                 onChange={(e) => setMessage(e.target.value)}
@@ -37,6 +42,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
     )
     
 };
+
 
 const mapStateToProps = (state) => ({
     chat: state.watson.messages
