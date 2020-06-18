@@ -1,9 +1,9 @@
-.container{
+.container, .login{
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.chat{
+.chat, .login{
     width: 25em;
     margin-left: auto;
     margin-right: auto;
@@ -40,7 +40,7 @@
     padding-bottom: 5em;
 }
 
-#chatbox {
+#chatbox, .loginbox {
     border: 0;
     border-bottom: 1px solid black;
     outline: none;

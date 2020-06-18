@@ -3,9 +3,15 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Provider } from "react-redux";
 import store from "./store";
-import Chat from "./components/chat/Chat";
+//import Chat from "./components/chat/Chat";
 import { createSession } from "./actions/watson";
 import axios from "axios";
+
+//new router for login 
+//import Login from "./components/login/Login";
+import { Router } from 'react-router-dom';
+import history from './history';
+import Routes from './routes';
 
 // checks to see if there's already a session
 // if there is, get a new session_id
@@ -30,8 +36,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="App">
-          <Chat />
+        <Router history={history}>
+          <Routes />
+          {/* <Login />
+          <Chat />  */}
            {console.log("in app.js")}
+        </Router>
       </div>
     </Provider>
   );

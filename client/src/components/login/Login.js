@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/login";
 
-const Login = ({pID, login}) => {
+const Login = ({login}) => {
     // allows variable to grab message from user 
     const[pID, setPID] = useState("");
 

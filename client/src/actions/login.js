@@ -5,6 +5,7 @@ export const login = (pID) => async (dispatch) => {
         console.log("in login action");
         dispatch({type: SIGN_IN_SUCCESS, payload: pID});
     }catch(err){
+        console.log("in login action fail");
         dispatch({type: SIGN_IN_FAIL});
     }
 }
