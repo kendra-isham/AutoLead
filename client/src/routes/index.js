@@ -6,9 +6,9 @@ import Login from "../components/login/Login";
 export default function Routes() {
     return (
       <Switch>
-        <Route path="/" exact component={Login} />
-        <Route path="/chat" component={Chat} isPrivate />
-        {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
+        <Route exact path="/" component={Login} />
+        <Route path="/chat" component={Chat} isPrivate/>
+        {/* redirect user to SignIn page if route does not exist*/}
         <Route component={Login} />
       </Switch>
     );

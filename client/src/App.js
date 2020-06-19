@@ -1,5 +1,6 @@
 // dependancies 
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { Provider } from "react-redux";
 import store from "./store";
@@ -37,10 +38,7 @@ const App = () => {
     <Provider store={store}>
       <div className="App">
         <Router history={history}>
-          <Routes />
-          {/* <Login />
-          <Chat />  */}
-           {console.log("in app.js")}
+          <Routes /> 
         </Router>
       </div>
     </Provider>
