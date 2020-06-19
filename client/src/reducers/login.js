@@ -12,11 +12,13 @@ export default (state=initialState, action) => {
     const {type, payload} = action;
     let {loggedIn} = state;
     switch(type){
+
         case SIGN_IN_SUCCESS:
             loggedIn = [true, payload];
             console.log("YOU ARE SIGNED IN");
             history.push("/chat");
             return {
+                ...state,
                 loggedIn
             }
         case SIGN_IN_FAIL:
@@ -24,9 +26,10 @@ export default (state=initialState, action) => {
             console.log("YOU ARE NOT SIGNED IN");  
             history.push("/");    
             return {
+                ...state,
                 loggedIn
             }
         default: 
-            return initialState
+            return state
     };
 };
