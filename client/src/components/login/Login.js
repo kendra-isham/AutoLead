@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/login";
 import store from "../../store";
-//import { Link } from 'react-router';
+// import history from "../../history"
+// import { Link } from 'react-router-dom';
 
-
-
+ 
 const Login = ({login}) => {
     // allows variable to grab message from user 
     const[pID, setPID] = useState("");
@@ -34,22 +34,15 @@ const Login = ({login}) => {
             </div>
 
             <div className="welcome">
-                {store.getState().loggedIn ? 
-                    <button className="signedIn" to="/chat">Click Here</button>
+            {console.log("logged in: " + store.getState().login.loggedIn[0])}
+            {/* this doesn't work */}
+                {/* { store.getState().login.loggedIn[0] ? 
+                    <button onClick={() => history.push("/chat")}>Signed In</button>
                     :
-                    <button className="signIn" to="/">Please Sign In</button>}
+                    <Link className="signIn" to="/">Not Signed In</Link>} */}
             </div>
-            {/* <div className="welcomeContainer">
-                {/* displays a login message when logged in
-                <div className="maxHeight">
-                    {login.length === 0 ? ""
-                    : login.map((pID, index) => <div className={login.pId} key={login.pID}>Hello, {login.pID}</div>)}
-                </div>
-            </div> */}
-
         </div>
     )
-    
 };
 
 const mapStateToProps = (state) => ({

@@ -33,7 +33,6 @@ const App = () => {
       store.dispatch(createSession());
   //});
 
-
   return (
     <Provider store={store}>
       <div className="App">

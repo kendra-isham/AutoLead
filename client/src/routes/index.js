@@ -7,7 +7,7 @@ export default function Routes() {
     return (
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/chat" component={Chat} isPrivate/>
+        <Route path="/chat" component={Chat} is Private/>
         {/* redirect user to SignIn page if route does not exist*/}
         <Route component={Login} />
       </Switch>
