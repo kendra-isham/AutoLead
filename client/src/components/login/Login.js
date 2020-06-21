@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/login";
 import store from "../../store";
-//import history from "../../history"
-// import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Chat from "../chat/Chat";
 
  
 const Login = ({login}) => {
@@ -34,12 +34,12 @@ const Login = ({login}) => {
             </div>
 
             <div className="welcome">
-            {console.log("logged in: " + store.getState().login.loggedIn[0])}
-            {/* this doesn't work */}
-                {/* { store.getState().login.loggedIn[0] ? 
-                    <button onClick={() => history.push("/chat")}>Signed In</button>
-                    :
-                    <Link className="signIn" to="/">Not Signed In</Link>} */}
+            {console.log("logged in: " + store.getState().login.loggedIn[0])} 
+                {
+                    store.getState().login.loggedIn[0] ?
+                    
+                    <Route to='/chat' component={Chat}/> : <Route to={'/'}/>
+                }
             </div>
         </div>
     )
