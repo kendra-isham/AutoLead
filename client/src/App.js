@@ -1,15 +1,10 @@
 // dependancies 
-// import React, { useEffect } from 'react';
 import React from 'react';
 import './App.css';
 import { Provider } from "react-redux";
 import store from "./store";
-//import Chat from "./components/chat/Chat";
 import { createSession } from "./actions/watson";
 import axios from "axios";
-
-//new router for login 
-//import Login from "./components/login/Login";
 import { Router } from 'react-router-dom';
 import history from './history';
 import Routes from './routes';
@@ -27,11 +22,8 @@ if (localStorage.session) {
 const App = () => {
 
   // creates session
-  // useEffect assists in creating session upon refresh
-  // this was commented out to see if it fixes the intermittent message_fail error upon load
-  //useEffect(() => {
-      store.dispatch(createSession());
-  //});
+  store.dispatch(createSession());
+
 
   return (
     <Provider store={store}>

@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/login";
 import store from "../../store";
-import { Route } from 'react-router-dom';
 import Chat from "../chat/Chat";
 
- 
 const Login = ({login}) => {
     // allows variable to grab message from user 
     const[pID, setPID] = useState("");
@@ -21,27 +19,31 @@ const Login = ({login}) => {
     };
 
     return (
-        <div className="login">
+        <div className="container">
+        <div className="login" id={store.getState().login.loggedIn[0] ? "logged" : "guest"}>
           <h1>Modem Chat</h1>
           <h5>Please Enter your PID</h5>
             {/*handle pID */}      
-            <div className="loginBox">
+            <div className="loginBox" id="loginBox">
                <input id = "pID" 
                 onChange={(e) => setPID(e.target.value)}
                 onKeyPress={handleClick}
                 value={pID}
                 />
             </div>
+        </div>
 
             <div className="welcome">
             {console.log("logged in: " + store.getState().login.loggedIn[0])} 
                 {
-                    store.getState().login.loggedIn[0] ?
-                    
-                    <Route to='/chat' component={Chat}/> : <Route to={'/'}/>
-                }
+                    store.getState().login.loggedIn[0] 
+                    ?
+                    <Chat /> 
+                    :
+                    null
+                }    
             </div>
-        </div>
+         </div>
     )
 };
 

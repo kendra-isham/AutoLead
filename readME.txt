@@ -11,7 +11,7 @@ Code Louisville Requirements fulfilled:
 --- Analyze text and display information about it (ex: how many words in a paragraph)
 
 TODO: 
---- finish login page 
+--- set up regex for pID validation 
 --- fix "bot" and "user" tags to include pID and no bot
 --- connect to mongo db (probably atlas) 
     --- log and count all questions asked by individual pIDs
@@ -19,7 +19,6 @@ TODO:
     --- (if time) generate an email weekly with this data. **I have no clue how to do this.
     --- (if time) display most commonly asked about modem types and questions (ie entities and intents)
 --- infinite scroll in the div instead of scrolling the whole page when too many questions are asked 
---- fix issue with not getting sessionID upon first launch of server and having to refresh page. **I have no clue how to do this. 
 --- set up hosting with heroku 
 
 How to run: 

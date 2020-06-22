@@ -3,6 +3,11 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+
+#logged {
+    display: none;
+}
+
 .chat, .login{
     width: 25em;
     margin-left: auto;

@@ -1,6 +1,5 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_FAIL
    } from "../actions/types";
-//import history from "../history";
 
 // set initial logged in state to false
 const initialState = {
@@ -15,8 +14,6 @@ export default (state=initialState, action) => {
         case SIGN_IN_SUCCESS:
             loggedIn = [true, payload];
             console.log("YOU ARE SIGNED IN");
-            //history.push("/chat");
-            //<Redirect to="/chat"/>
             return {
                 ...state,
                 loggedIn
@@ -24,8 +21,6 @@ export default (state=initialState, action) => {
         case SIGN_IN_FAIL:
             loggedIn = [false, payload];
             console.log("YOU ARE NOT SIGNED IN");  
-            //history.push("/");
-            //<Redirect to="/"/>
             return {
                 ...state,
                 loggedIn
