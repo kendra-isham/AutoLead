@@ -7,14 +7,19 @@ import Chat from "../chat/Chat";
 const Login = ({login}) => {
     // allows variable to grab message from user 
     const[pID, setPID] = useState("");
+    const regex = /^[p|P]+[0-9]{7}$/;
 
     const handleClick = async(e) => {
         const code = e.keyCode || e.which;
         if(code === 13){
             console.log(pID + " in click event");
-            //TODO: set up regex to make sure p and 7 numbers. if not alert to retry 
-            login(pID);
-            setPID("");
+            if(regex.test(pID)){
+                login(pID);
+                setPID("");
+            }else{
+                alert("Please enter p followed by 7 numbers")
+            };
+            
         };
     };
 
