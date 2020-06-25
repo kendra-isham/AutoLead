@@ -16,6 +16,7 @@ const Login = ({login}) => {
             if(regex.test(pID)){
                 login(pID);
                 setPID("");
+                window.localStorage.setItem('pID', JSON.stringify(store.getState().login.loggedIn[1]))
             }else{
                 alert("Please enter p followed by 7 numbers")
             };
@@ -25,6 +26,7 @@ const Login = ({login}) => {
 
     return (
         <div className="container">
+        {/* sets id based off of login status to be able to hide if logged in */}
         <div className="login" id={store.getState().login.loggedIn[0] ? "logged" : "guest"}>
           <h1>Modem Chat</h1>
           <h5>Please Enter your PID</h5>
@@ -37,7 +39,7 @@ const Login = ({login}) => {
                 />
             </div>
         </div>
-
+        
             <div className="welcome">
             {console.log("logged in: " + store.getState().login.loggedIn[0])} 
                 {

@@ -6,7 +6,6 @@ import { userMessage, sendMessage } from "../../actions/watson";
 const Chat = ({chat, userMessage, sendMessage}) => {
     // allows variable to grab message from user
     const [message, setMessage] = useState("");
-
     // will submit user message to api 
     // will only check if user presses enter
     const handleClick = async(e) => {
@@ -23,13 +22,18 @@ const Chat = ({chat, userMessage, sendMessage}) => {
         <div className="chat">
           <h1>Modem Chat</h1>
           <h5>Please reference the model number for the modem in question.</h5>
-          <h6>Ex: "Does the DG1670 have wifi?</h6>
+          <h5>I can answer questions about modem creditials, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
+          <h6>Ex: "Does the DG1670 have wifi?"</h6>
           
+          {/* view stats */}
+            {/* <div className="stats">
+                <button>View Stats</button>
+            </div> */}
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">
                     {chat.length === 0 ? ""
-                    : chat.map((msg, index) => <div className={msg.type} key={index}>{msg.type}: {msg.message}</div>)}
+                    : chat.map((msg, index) => <div className={msg.type} key={index}> {msg.message}</div>)}
                 </div>
             </div>
             {/* get messages */}

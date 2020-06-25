@@ -1,5 +1,5 @@
 // dependancies 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,14 +17,20 @@ if (localStorage.session) {
 } else {
   delete axios.defaults.headers.common["session_id"];
 }
+//  if(localStorage.pID !== store.getState().login.loggedIn[1]){
+//    window.localStorage.setItem('pID', JSON.stringify(store.getState().login.loggedIn[1]))
+//  }
 
 // connect app to redux 
 const App = () => {
 
   // creates session
-  store.dispatch(createSession());
+  useEffect(() => {
+    // Check if there session
+//    if (!localStorage.session) {
+       store.dispatch(createSession());
 
-
+  });
   return (
     <Provider store={store}>
       <div className="App">

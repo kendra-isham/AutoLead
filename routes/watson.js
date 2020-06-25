@@ -4,6 +4,13 @@ const router = express.Router();
 const parser = require("body-parser");
 const AssistantV2 = require("ibm-watson/assistant/v2");
 const { IamAuthenticator } = require("ibm-watson/auth");
+
+require("dotenv").config();
+const mongodb = require("mongodb");
+const MongoClient = mongodb.MongoClient;
+
+// const DB = require("../database");
+
 require("dotenv").config();
 
 // creates instance of assistance
@@ -29,8 +36,7 @@ router.get("/session", async (req, res) => {
     }catch(err){
         console.log(process.env.WATSON_ASSISTANT_ID);
         res.send("There was an error connecting");
-        console.log(err);
-        
+        console.error(err);
     };
 });
 
@@ -48,12 +54,33 @@ router.get("/session", async (req, res) => {
             input: {
               message_type: "text",
               text: req.body.input,
-            },
+            }
           };
         
         try {
           const message = await assistant.message(payload);
+
+          //get intent and entity for database
           console.log(payload);
+          //console.log(toInput);
+            
+            //db
+            MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
+            .then((client) => {
+                console.log("connected to the database");
+                let intent = message.result.output.intents[0].intent;
+                let entity = message.result.output.entities[0].value;
+                let pID = req.body.pID;
+                console.log("pID: "+pID);
+                console.log("intent: "+intent);
+                console.log("entity: "+entity);
+                client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`})
+             //   client.close();
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
           res.json(message["result"]);
         } catch (err) {
           res.send("There was an error with the payload.");
