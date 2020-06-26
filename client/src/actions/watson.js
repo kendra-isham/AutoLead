@@ -4,6 +4,7 @@ import { INPUT_SUCCESS, INPUT_FAIL,
          MESSAGE_SUCCESS, MESSAGE_FAIL,
         } from "./types";
 import axios from "axios";
+import store from "../store";
 
 // handles user message 
 export const userMessage = (message) => async (dispatch) => {
@@ -30,12 +31,12 @@ export const createSession = () => async (dispatch) => {
 export const sendMessage = message => async (dispatch) => {
     try{
         console.log("in createMessage");
-        const body = {input:message};
+        const body = {input:message, pID: store.getState().login.loggedIn[1]};
         const res = axios.post("/watson/message", body);
         dispatch({type: MESSAGE_SUCCESS, payload: (await res).data.output.generic[0].text});
         console.log(res);
     }catch(err){
         dispatch({type: MESSAGE_FAIL});
-    }
-}
+    };
+};
 

@@ -1,20 +1,26 @@
-.container{
+.container, .login{
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.chat{
+
+#logged {
+    display: none;
+}
+
+.chat, .login{
     width: 25em;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    text-align: center;
 }
 
 .user, .bot {
     padding-top: 1em;
     padding-bottom: 1em;
     border-radius: 1em;
-    margin-top: 1em;
+    margin-top: 1em; 
     display: inline;
     float: right;
 }
@@ -37,10 +43,9 @@
 
 .historyContainer {
     padding-bottom: 5em;
-    
 }
 
-#chatbox {
+#chatbox, .loginbox {
     border: 0;
     border-bottom: 1px solid black;
     outline: none;

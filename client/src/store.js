@@ -1,7 +1,7 @@
 // dependencies 
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
-import combineReducers from "./reducers";
+import combinedReducers from "./reducers";
 
 // connect app to redux dev tools to let chrome dev tool work 
 import {composeWithDevTools} from "redux-devtools-extension";
@@ -10,11 +10,12 @@ import {composeWithDevTools} from "redux-devtools-extension";
 const intitialState = {};
 
 // get middleware (thunk)
+// allows for async calls
 const middleware = [thunk];
 
 // set up store 
 const store = createStore(
-    combineReducers, 
+    combinedReducers, 
     intitialState, 
     composeWithDevTools(applyMiddleware(...middleware)),
 );
