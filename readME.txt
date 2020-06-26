@@ -12,7 +12,7 @@ Code Louisville Requirements fulfilled:
 --- Analyze text and display information about it (ex: how many words in a paragraph)
 
 TODO: 
---- connect to mongo db (probably atlas) 
+--- connect to mongodb atlas 
     --- log and count all questions asked by individual pIDs
     --- create button on main chat page to display number of times question has been asked overall 
     --- (if time) generate an email weekly with this data. **I have no clue how to do this.
