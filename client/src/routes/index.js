@@ -1,17 +1,16 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router} from 'react-router-dom';
 import Login from "../components/login/Login";
 import Chat from "../components/chat/Chat";
+import Database from "../components/database/Database";
 
 export default function Routes() {
     return (
       <Switch>
+        <Route path="/chat" component={Chat} />
+        <Route exact path="/stats" component={Database} />
         <Route exact path="/" component={Login} />
-        <Route exact path="/" component={Chat} /> 
-      </Switch> 
-    );
-};
+      </Switch>
 
-// <Switch>
-//<Route exact path="/" component={Login} />
-//</Switch> 
+  );
+};

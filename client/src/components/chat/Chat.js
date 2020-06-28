@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { userMessage, sendMessage } from "../../actions/watson";
+import Database from "../database/Database";
+import { Route, Link, Redirect} from "react-router-dom";
 
 const Chat = ({chat, userMessage, sendMessage}) => {
     // allows variable to grab message from user
@@ -24,11 +26,12 @@ const Chat = ({chat, userMessage, sendMessage}) => {
           <h5>Please reference the model number for the modem in question.</h5>
           <h5>I can answer questions about modem creditials, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
           <h6>Ex: "Does the DG1670 have wifi?"</h6>
-          
           {/* view stats */}
-            {/* <div className="stats">
-                <button>View Stats</button>
-            </div> */}
+            <div className="stats">
+                <Link to="/stats" className="button">View Stats</Link>
+                {/* <Redirect path="/stats" component= {Database} /> */}
+
+            </div>
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">
@@ -41,7 +44,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleClick}
                 value={message}
-            />
+            /> 
         </div>
     )
     

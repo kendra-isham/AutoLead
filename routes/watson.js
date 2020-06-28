@@ -41,6 +41,7 @@ router.get("/session", async (req, res) => {
 });
 
 // handle messages
+// connect to and post to database
     //parse the body 
     router.use(parser.urlencoded({extended: false}));
     router.use(parser.json());
@@ -59,23 +60,25 @@ router.get("/session", async (req, res) => {
         
         try {
           const message = await assistant.message(payload);
-
-          //get intent and entity for database
           console.log(payload);
-          //console.log(toInput);
-            
-            //db
-            MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
+
+          //database connection and logging
+        MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
             .then((client) => {
                 console.log("connected to the database");
-                let intent = message.result.output.intents[0].intent;
-                let entity = message.result.output.entities[0].value;
-                let pID = req.body.pID;
-                console.log("pID: "+pID);
-                console.log("intent: "+intent);
-                console.log("entity: "+entity);
-                client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`})
-             //   client.close();
+                try{
+                    //get intent and entity for database
+                    let intent = message.result.output.intents[0].intent;
+                    let entity = message.result.output.entities[0].value;
+                    let pID = req.body.pID;
+                    console.log("pID: "+pID);
+                    console.log("intent: "+intent);
+                    console.log("entity: "+entity);
+                    client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`});
+                    //client.close();
+                }catch(err){
+                    console.error(err);
+                }
             })
             .catch(err => {
                 console.error(err);
@@ -84,7 +87,7 @@ router.get("/session", async (req, res) => {
           res.json(message["result"]);
         } catch (err) {
           res.send("There was an error with the payload.");
-          console.log(err);
+          console.error(err);
         }
     });
 
