@@ -19,10 +19,6 @@
         background-color: rgb(3, 90, 141);
     }
 
-/* #logged {
-    display: none;
-} */
-
 .chat, .login{
     width: 25em;
     margin-left: auto;

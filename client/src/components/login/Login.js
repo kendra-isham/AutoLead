@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/login";
 import store from "../../store";
-//import Chat from "../chat/Chat";
 import { Redirect } from 'react-router-dom';
-import {withRouter} from 'react-router'
-import history from '../../history';
-
-
 
 const Login = ({login}) => {
     // allows variable to grab message from user 
@@ -21,12 +16,10 @@ const Login = ({login}) => {
             if(regex.test(pID)){
                 login(pID);
                 setPID("");
-                window.localStorage.setItem('pID', JSON.stringify(store.getState().login.loggedIn[1]));
-                
+                window.localStorage.setItem('pID', JSON.stringify(store.getState().login.loggedIn[1])); 
             }else{
                 alert("Please enter p followed by 7 numbers")
             };
-            
         };
     };
 
@@ -48,15 +41,6 @@ const Login = ({login}) => {
         
             <div className="welcome">
             {console.log("logged in: " + store.getState().login.loggedIn[0])} 
-               {/* {
-                   flag ?
-                   <Chat />
-                   :
-                   null
-                    <Redirect to="/chat" />                    
-
-               }
-                */}
                 {
                     store.getState().login.loggedIn[0] 
                     ?
@@ -75,4 +59,4 @@ const mapStateToProps = (state) => ({
 
 
 // export 
-export default withRouter(connect(mapStateToProps, {login})(Login));
+export default connect(mapStateToProps, {login})(Login);

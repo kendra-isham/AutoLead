@@ -1,8 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// import Chat from "../chat/Chat"
-// import ReactDOM from 'react-dom';
-
 
 const Database = ({}) => {
     //get database info here 

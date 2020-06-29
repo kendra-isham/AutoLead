@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { userMessage, sendMessage } from "../../actions/watson";
-import Database from "../database/Database";
-import { Route, Link, Redirect} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Chat = ({chat, userMessage, sendMessage}) => {
     // allows variable to grab message from user
@@ -29,8 +28,6 @@ const Chat = ({chat, userMessage, sendMessage}) => {
           {/* view stats */}
             <div className="stats">
                 <Link to="/stats" className="button">View Stats</Link>
-                {/* <Redirect path="/stats" component= {Database} /> */}
-
             </div>
             <div className="historyContainer">
                 {/* Handle Messages */}

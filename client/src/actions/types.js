@@ -15,5 +15,9 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_SUCCESS";
 
 //login 
-export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS"
-export const SIGN_IN_FAIL = "SIGN_IN_FAIL"
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
+export const SIGN_IN_FAIL = "SIGN_IN_FAIL";
+
+//database 
+export const DATABASE_SUCCESS = "DATABASE_SUCCESS";
+export const DATABASE_FAIL = "DATABASE_FAIL";

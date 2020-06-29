@@ -63,7 +63,7 @@ router.get("/session", async (req, res) => {
           console.log(payload);
 
           //database connection and logging
-        MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
+            MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
             .then((client) => {
                 console.log("connected to the database");
                 try{
@@ -75,21 +75,45 @@ router.get("/session", async (req, res) => {
                     console.log("intent: "+intent);
                     console.log("entity: "+entity);
                     client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`});
-                    //client.close();
                 }catch(err){
-                    console.error(err);
+                   console.error(err);
                 }
             })
             .catch(err => {
                 console.error(err);
+                client.close();
             })
-
           res.json(message["result"]);
         } catch (err) {
           res.send("There was an error with the payload.");
           console.error(err);
         }
     });
+
+
+//THIS HAS A DATA[] SCOPE ISSUE I THINK 
+//IT WILL LOG DATA IN THE FOREACH BUT IT WILL ONLY SEND AN EMPTY ARRAY
+
+//GET data from database 
+router.get("/data", async (req, res) => {
+    let data = [];
+      //connects to database
+    try{
+        MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }) 
+        .then((client) => {
+            //gets the database collection and finds every document 
+            client.db().collection('messages').find({}).forEach( doc => {
+                    data.push(doc);
+                    //this logs all objects in the array successfully 
+                    console.log(data);
+                }) 
+            //this sends an empty array  
+            res.send(data);
+            })
+    }catch(err){
+        console.error(err);
+    }
+})
 
 // export routes
 module.exports = router;
