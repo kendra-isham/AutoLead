@@ -90,29 +90,23 @@ router.get("/session", async (req, res) => {
         }
     });
 
-
-//THIS HAS A DATA[] SCOPE ISSUE I THINK 
-//IT WILL LOG DATA IN THE FOREACH BUT IT WILL ONLY SEND AN EMPTY ARRAY
-
 //GET data from database 
-router.get("/data", async (req, res) => {
-    let data = [];
-      //connects to database
+router.get("/data", async (req, res) => { 
+    const data = [];   
     try{
         MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }) 
         .then((client) => {
             //gets the database collection and finds every document 
             client.db().collection('messages').find({}).forEach( doc => {
                     data.push(doc);
-                    //this logs all objects in the array successfully 
-                    console.log(data);
+                }).then(() => {
+                    console.log("docs pushed to array")
+                    res.status(200).send(data);
                 }) 
-            //this sends an empty array  
-            res.send(data);
             })
     }catch(err){
-        console.error(err);
-    }
+       console.error(err);
+   }
 })
 
 // export routes
