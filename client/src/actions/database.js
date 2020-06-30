@@ -1,18 +1,14 @@
 import { DATABASE_SUCCESS, DATABASE_FAIL
    } from "./types";
 import axios from "axios";
-import store from "../store";
 
-
-// POST message to the bot 
-export const sendData = data => async (dispatch) => {
+export const getData = () => async (dispatch) => {
     try{
-        console.log("in sendData");
-        const body = {};
-        const res = axios.post("/stats", body);
-        dispatch({type: DATABASE_SUCCESS, payload: (await res).data.output.generic[0].text});
-        console.log(res);
+        console.log("in getData");
+        const res = axios.get("/watson/data");
+        dispatch({type: DATABASE_SUCCESS, payload: (await res).data});
+        console.log(res);   
     }catch(err){
-        dispatch({type: MESSAGE_FAIL});
+        dispatch({type: DATABASE_FAIL});
     };
 };

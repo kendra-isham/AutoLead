@@ -71,10 +71,8 @@ router.get("/session", async (req, res) => {
                     let intent = message.result.output.intents[0].intent;
                     let entity = message.result.output.entities[0].value;
                     let pID = req.body.pID;
-                    console.log("pID: "+pID);
-                    console.log("intent: "+intent);
-                    console.log("entity: "+entity);
                     client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`});
+                    console.log("data added");
                 }catch(err){
                    console.error(err);
                 }
@@ -94,6 +92,7 @@ router.get("/session", async (req, res) => {
 router.get("/data", async (req, res) => { 
     const data = [];   
     try{
+        console.log("get request to database received")
         MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }) 
         .then((client) => {
             //gets the database collection and finds every document 
@@ -101,7 +100,8 @@ router.get("/data", async (req, res) => {
                     data.push(doc);
                 }).then(() => {
                     console.log("docs pushed to array")
-                    res.status(200).send(data);
+                    res.send(data);
+                    client.close();
                 }) 
             })
     }catch(err){
