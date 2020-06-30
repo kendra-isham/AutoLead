@@ -1,12 +1,10 @@
 import { DATABASE_SUCCESS, DATABASE_FAIL
 } from "../actions/types";
 
-// set initial logged in state to false
+// set initial state to empty array
 const initialState = {
  db : []
 };
-
-//this needs cleaned up so state is not database -> db -> 0 -> db
 
 export default (state=initialState, action) => {
  const {type, payload} = action;
@@ -14,8 +12,8 @@ export default (state=initialState, action) => {
  switch(type){
 
      case DATABASE_SUCCESS:
-         db = [{ db:payload }];
-         console.log(payload);         
+         db = payload;
+        // console.log(payload);         
          return {
              ...state,
              db
