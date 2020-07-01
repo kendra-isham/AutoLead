@@ -40,6 +40,7 @@ const Login = ({login}) => {
         </div>
         
             <div className="welcome">
+      
             {console.log("logged in: " + store.getState().login.loggedIn[0])} 
                 {
                     store.getState().login.loggedIn[0] 

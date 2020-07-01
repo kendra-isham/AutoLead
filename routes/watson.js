@@ -109,5 +109,32 @@ router.get("/data", async (req, res) => {
    }
 })
 
+//post from browser to get pID needs to go here and the get request needs to be nested 
+router.post("/data/pID", async (req, res) => {
+    let searchValue = req.body.input;
+    console.log(req.body.input);
+    //res.send(searchValue)
+    res.json(searchValue)
+});
+
+// router.get("/data/db", async (req, res) => { 
+//     const data = [];   
+//     try{
+//         console.log("get request to database received")
+//         MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }) 
+//         .then((client) => {
+//             //gets the database collection and finds every document 
+//             client.db().collection('messages').find({ "pID" : `${searchValue}`}).forEach( doc => {
+//                     data.push(doc);
+//                 }).then(() => {
+//                     console.log("docs pushed to array")
+//                     res.send(data);
+//                     client.close();
+//                 }) 
+//             })
+//     }catch(err){
+//     console.error(err);
+//     }
+// })
 // export routes
 module.exports = router;
