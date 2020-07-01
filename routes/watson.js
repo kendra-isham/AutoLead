@@ -61,7 +61,17 @@ router.get("/session", async (req, res) => {
         try {
           const message = await assistant.message(payload);
           console.log(payload);
-
+          MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
+          .then((client) => {
+              console.log("connected to the database");
+              try{
+                client.db().collection('userInput').insertOne({input: `${req.body.input}`});
+                console.log("userInput added to userInput collection")
+              }catch(err){
+                  console.error(err);
+              }
+            })
+        
           //database connection and logging
             MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true })
             .then((client) => {
@@ -72,6 +82,7 @@ router.get("/session", async (req, res) => {
                     let entity = message.result.output.entities[0].value;
                     let pID = req.body.pID;
                     client.db().collection('messages').insertOne({pID: `${pID}`, intent: `${intent}`, entity: `${entity}`});
+                    
                     console.log("data added");
                 }catch(err){
                    console.error(err);
