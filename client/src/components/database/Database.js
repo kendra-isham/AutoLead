@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getData } from "../../actions/database";
 import store from "../../store";
 import ReactTable from 'react-table-v6'
+//import ReactToExcel from "react-html-table-to-excel";
 import 'react-table-v6/react-table.css'
 
 
@@ -51,6 +52,7 @@ const Database = ({getData }) => {
             <p>Search by pID, modem, or topic. Must be exact match</p>
             <div className="database">
             <ReactTable
+                id="dbTable"
                 columns={columns}
                 data={store.getState().database.db}
                 filterable
@@ -59,6 +61,13 @@ const Database = ({getData }) => {
             />
             <button className="button" onClick={handleClick}>Click to display data</button>  
             </div>
+            {/* <ReactToExcel 
+                //className="button"
+                table="dbTable"
+                filename="modemBot_file"
+                sheet="sheet1"
+                buttonText="Export to Excel"
+            /> */}
         </div>
     );
 };

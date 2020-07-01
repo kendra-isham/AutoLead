@@ -13,12 +13,10 @@ Code Louisville Requirements fulfilled:
 
 TODO: 
 --- Database: 
-    --- /stats needs to display info from database based off user input 
-    --- (if time) generate an email weekly with this data in excel form. **I have no clue how to do this.
---- infinite scroll in the div instead of scrolling the whole page when too many questions are asked 
+    --- export db form to excel 
 --- set up hosting with heroku 
---- figure out localstorage to have a persistant logged in state
 --- set /chat and /stats as private routes so only logged in users have access 
+--- set up redux persist for username so we redirect from / to /chat automatically 
 
 How to run: 
 --- will have to be hosted unless i share api key info i think
