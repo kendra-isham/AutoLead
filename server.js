@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
-const past = requuire("path");
+const path = require("path");
 
 // parse on request bodies 
 app.use(express.json());
