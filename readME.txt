@@ -17,21 +17,11 @@ TODO:
 --- set /chat and /stats as private routes so only logged in users have access 
 --- set up redux persist for username so we redirect from / to /chat automatically 
 
-How to run: 
---- Navigate to https://radiant-sea-05632.herokuapp.com/ in your browser 
+How to setup: 
+--- To run globally: 
+    --- Navigate to https://radiant-sea-05632.herokuapp.com/ in your browser 
 
---- Please login with p0000000 for database tracking purposes. 
-    --- the form will allow any p+7 numbers
---- If "message_fail" alerts, please navigate back to https://radiant-sea-05632.herokuapp.com/ and refresh. I am actively troubleshooting this bug.
---- The modem bot can answer a variety of questions about Charter provided internet modems that would be asked by a repair representative during troubleshooting when a customer calls in. 
-    --- Questions currently must be formatted with a question topic (ie speed, wifi capability, port forwarding) and a modem model number.
-    --- Example questions to ask: 
-        --- "How do I login to the CGNM2250?" 
-        --- "Do I use homeworld for the f@st router?" 
-        --- "What's the max speed for an E31N2V1?"
-        --- "Where do I set up port forwarding for a DDW36C?" 
-
---- To run locally; 
+--- To run locally: 
     --- Install dependencies for server
         npm install
 
@@ -44,16 +34,14 @@ How to run:
     --- Set up .env 
         I will provide .env file for Code Louisville grading purposes 
         
-        Required variables in .env: 
-            WATSON_ASSISTANT_APIKEY
-            WATSON_ASSISTANT_URL
-            WATSON_ASSISTANT_ID
+        --- Required variables in .env: 
+                WATSON_ASSISTANT_APIKEY
+                WATSON_ASSISTANT_URL
+                WATSON_ASSISTANT_ID
+                **Watson keys are found under your Watson Assistant settings -> API details 
 
-            **Watson keys are found under your Watson Assistant settings -> API details 
-
-            MONGO_URL
-
-            **Can be your local URL if running the mongo server or hosted URL. 
+                MONGO_URL
+                **Can be your local URL if running the mongo server or hosted URL. 
 
     --- Run the Express server only
         npm run server
@@ -63,3 +51,17 @@ How to run:
 
     *** Server runs on http://localhost:5000 and client on http://localhost:3000
     *** Built using npm version 6.14.4
+
+How to use: 
+--- Please login with p0000000 for database tracking purposes. 
+    --- the form will allow any p+7 numbers
+--- If "message_fail" alerts, please navigate back to https://radiant-sea-05632.herokuapp.com/ or http://localhost:3000 and refresh. I am actively troubleshooting this bug.
+--- The modem bot can answer a variety of questions about Charter provided internet modems that would be asked by a repair representative during troubleshooting when a customer calls in. 
+    --- Questions currently must be formatted with a question topic (ie speed, wifi capability, port forwarding) and a modem model number.
+    --- Example questions to ask: 
+        --- "How do I login to the CGNM2250?" 
+        --- "Do I use homeworld for the f@st router?" 
+        --- "What's the max speed for an E31N2V1?"
+        --- "Where do I set up port forwarding for a DDW36C?" 
+        --- "Can I port forward 192.168.44.19?"
+
