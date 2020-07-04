@@ -39,7 +39,8 @@ $ npm install
 
 Install the dependencies for the client
 ```sh
-$ npm run client-install
+$ cd client
+$ npm install
 ```
 
 Run the client & server concurrently 
