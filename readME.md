@@ -14,14 +14,15 @@ Code Louisville Requirements fulfilled:
 TODO: 
 --- Database: 
     --- export db form to excel 
---- set /chat and /stats as private routes so only logged in users have access 
---- set up redux persist for username so we redirect from / to /chat automatically 
+--- store should persist after page refresh 
+--- fix 5 minute session timeout
 
 How to setup: 
 --- To run globally: 
     --- Navigate to https://radiant-sea-05632.herokuapp.com/ in your browser 
 
 --- To run locally: 
+
     --- Install dependencies for server
         npm install
 
@@ -55,8 +56,9 @@ How to setup:
 How to use: 
 --- Please login with p0000000 for database tracking purposes. 
     --- the form will allow any p+7 numbers
---- If "message_fail" alerts, please navigate back to https://radiant-sea-05632.herokuapp.com/ or http://localhost:3000 and refresh. I am actively troubleshooting this bug.
---- The modem bot can answer a variety of questions about Charter provided internet modems that would be asked by a repair representative during troubleshooting when a customer calls in. 
+--- If "message_fail" alerts, please navigate back to https://radiant-sea-05632.herokuapp.com/ or http://localhost:3000 and refresh. 
+    --- This error means that the session from IBM has timed out after the designated 5 minutes of nonuse. I'm working on a work around for this.  
+--- The modem bot can answer a variety of questions about Charter provided internet modems that would be asked by a repair representative during troubleshooting when a customer calls. 
     --- Questions currently must be formatted with a question topic (ie speed, wifi capability, port forwarding) and a modem model number.
     --- Example questions to ask: 
         --- "How do I login to the CGNM2250?" 

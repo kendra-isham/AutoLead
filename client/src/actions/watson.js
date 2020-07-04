@@ -28,6 +28,10 @@ export const createSession = () => async (dispatch) => {
 };
 
 // POST message to the bot 
+
+//this gets a new session ID in the catch block. it matches localstorage and the newly created session id in the server
+//could be a problem with .on(end). 
+// how would we break out of the catch block without it??? 
 export const sendMessage = message => async (dispatch) => {
     try{
         console.log("in createMessage");
@@ -36,7 +40,17 @@ export const sendMessage = message => async (dispatch) => {
         dispatch({type: MESSAGE_SUCCESS, payload: (await res).data.output.generic[0].text});
         console.log(res);
     }catch(err){
-        dispatch({type: MESSAGE_FAIL});
+        //need to try to get a new session if message fails to post 
+        //session_ID expires after 5 minutes of inactivity which throws a message fail error 
+            // console.log("in message fail catch about to get")
+            // //this is an infinite loop
+            // store.dispatch(createSession()).then(
+            //     store.dispatch(userMessage(message)).then(
+            //         store.dispatch(sendMessage(message))
+            //     )
+            // )
+        dispatch({type: MESSAGE_FAIL})
+    
     };
 };
 

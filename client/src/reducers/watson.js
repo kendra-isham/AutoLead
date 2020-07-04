@@ -46,9 +46,11 @@ export default (state=initialState, action) => {
                 messages,
             };
         case MESSAGE_FAIL: 
-            alert("MESSAGE_FAIL: Please refresh the page");
+            alert("Message Fail. Session Expired. Please go back a page and refresh")
+            // messages = [...messages, {message:"redirect", type:"err"}];
             return {
                 ...state,
+                // messages
             };
         default:
             return {

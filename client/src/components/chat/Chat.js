@@ -16,8 +16,10 @@ const Chat = ({chat, userMessage, sendMessage}) => {
             userMessage(message);
             sendMessage(message);
             setMessage("");
+            console.log("dealing with message complete. back in chat.js")
         };
     };
+
 
     return (
         <div className="chat">
@@ -29,11 +31,13 @@ const Chat = ({chat, userMessage, sendMessage}) => {
             <div className="stats">
                 <Link to="/stats" className="button">View Stats</Link>
             </div>
+
+            {/* msg === "redirect" ? <Redirect to="/" /> : */}
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">
                     {chat.length === 0 ? ""
-                    : chat.map((msg, index) => <div className={msg.type} key={index}> {msg.message}</div>)}
+                    : chat.map((msg, index) =>  <div className={msg.type} key={index}> {msg.message}</div>)}
                 </div>
             </div>
             {/* get messages */}
