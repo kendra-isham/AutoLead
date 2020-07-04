@@ -25,7 +25,7 @@
 Auto Lead was built with [Node.js](https://nodejs.org/) v12.18.2
 
 Set up .env file
-  * I will provide .env vile for grading purposes
+  * I will provide .env file for grading purposes
   * Required .env variables:
     `WATSON_ASSISTANT_APIKEY`
     `WATSON_ASSISTANT_URL`
