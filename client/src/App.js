@@ -21,7 +21,7 @@ const App = () => {
 
   // creates session
   useEffect(() => {
-    store.dispatch(createSession());
+      store.dispatch(createSession());
   });
 
   return (

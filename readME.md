@@ -17,7 +17,7 @@
 
 ### TODO:
   - Export table data to excel upon button click
-  - Store needs to persist after page refresh
+  - pID in store needs to persist after page refresh
   - Logout button to clear localstorage
   - Fix 5 minute Watson session timeout that throws message_fail erro
   
