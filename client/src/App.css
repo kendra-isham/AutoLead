@@ -88,3 +88,7 @@
 p {
     font-weight: bold;
 }
+
+#dbButton1, #dbButton2 {
+    margin-right: 2em;
+}

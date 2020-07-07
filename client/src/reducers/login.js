@@ -1,9 +1,15 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_FAIL
    } from "../actions/types";
 
-// set initial logged in state to false
+let logged = false;
+if(localStorage.pID){
+    logged=true;
+}
+
+// set initial loggedIn state values in localstorage
 const initialState = {
-    loggedIn : [false, ""]
+    //loggedIn : [false, ""]
+    loggedIn : [`${logged}`,localStorage.pID.replace(/"/g,"") ]
 };
 
 export default (state=initialState, action) => {

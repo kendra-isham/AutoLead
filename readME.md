@@ -17,9 +17,8 @@
 
 ### TODO:
   - Export table data to excel upon button click
-  - pID in store needs to persist after page refresh
   - Logout button to clear localstorage
-  - Fix 5 minute Watson session timeout that throws message_fail erro
+  - Fix 5 minute Watson session timeout that throws message_fail error
   
 ### Installation
 Auto Lead was built with [Node.js](https://nodejs.org/) v12.18.2

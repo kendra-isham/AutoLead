@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { getData } from "../../actions/database";
 import store from "../../store";
 import ReactTable from 'react-table-v6'
-//import ReactToExcel from "react-html-table-to-excel";
 import 'react-table-v6/react-table.css'
+import { Link } from "react-router-dom";
 
 
 const Database = ({getData }) => {
     const handleClick = () => {
         getData();
     }
+
     //sets up ReactTable
     const columns = [
         {
@@ -59,7 +60,9 @@ const Database = ({getData }) => {
                 defaultPageSize={5}
                 noDataText={"Please click the button below to display data"}
             />
-            <button className="button" onClick={handleClick}>Click to display data</button>  
+            <br/>
+            <button className="button" id="dbButton1" onClick={handleClick}>Display Data</button>
+            <Link to="/chat" className="button">Back to Chat</Link>
             </div>
             {/* <ReactToExcel 
                 //className="button"

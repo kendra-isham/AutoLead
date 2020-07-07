@@ -8,9 +8,8 @@ import axios from "axios";
 import Routes from './routes';
 
 // checks to see if there's already a session
-// if there is, get a new session_id
 if (localStorage.session) {
-  delete axios.defaults.headers.common["session_id"];
+  
   axios.defaults.headers.common["session_id"] = localStorage.session;
 } else {
   delete axios.defaults.headers.common["session_id"];

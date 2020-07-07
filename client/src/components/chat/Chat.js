@@ -23,7 +23,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
 
     return (
         <div className="chat">
-          <h1>Modem Chat</h1>
+          <h1>Modem Chat </h1>
           <h5>Please reference the model number for the modem in question.</h5>
           <h5>I can answer questions about modem creditials, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
           <h6>Ex: "Does the DG1670 have wifi?"</h6>
