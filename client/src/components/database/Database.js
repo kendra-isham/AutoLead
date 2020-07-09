@@ -51,6 +51,7 @@ const Database = ({getData }) => {
             <h2>Get information about asked questions</h2>
             <p>Click headers to sort by pID, modem, or topic</p>
             <p>Search by pID, modem, or topic. Must be exact match</p>
+            <Link to="/chat" className="button">Back to Chat</Link>
             <div className="database">
             <ReactTable
                 id="dbTable"
@@ -62,7 +63,6 @@ const Database = ({getData }) => {
             />
             <br/>
             <button className="button" id="dbButton1" onClick={handleClick}>Display Data</button>
-            <Link to="/chat" className="button">Back to Chat</Link>
             </div>
             {/* <ReactToExcel 
                 //className="button"

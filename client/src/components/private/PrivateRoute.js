@@ -6,7 +6,7 @@ import {Redirect, Route} from "react-router-dom";
 const PrivateRoute = ({component: Component, ...rest}) => {
 
     let loggedIn = false;
-    if(localStorage.getItem("pID") !== "") {
+    if((localStorage.pID) && (localStorage.getItem("pID") !== "")) {
         loggedIn = true;
     }
 return(

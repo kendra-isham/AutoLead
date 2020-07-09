@@ -17,7 +17,6 @@ if (localStorage.session) {
 
 // connect app to redux 
 const App = () => {
-
   // creates session
   useEffect(() => {
       store.dispatch(createSession());

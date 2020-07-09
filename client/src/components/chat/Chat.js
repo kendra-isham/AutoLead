@@ -32,7 +32,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
                 <Link to="/stats" className="button">View Stats</Link>
             </div>
 
-            {/* msg === "redirect" ? <Redirect to="/" /> : */}
+            {/* gets watson data back with a carriage return between each line. .replace(/\u21B5/g,'test') */}
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">

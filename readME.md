@@ -15,10 +15,13 @@
   - Analyze text and display information about it (ex: how many words in a paragraph)
 
 
-### TODO:
+### TODO
+
+  - Set each line from Watson in a new chat bubble 
   - Export table data to excel upon button click
   - Logout button to clear localstorage
   - Fix 5 minute Watson session timeout that throws message_fail error
+  - Integrate into Skype 
   
 ### Installation
 Auto Lead was built with [Node.js](https://nodejs.org/) v12.18.2
