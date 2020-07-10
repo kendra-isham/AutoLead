@@ -20,7 +20,6 @@ const Chat = ({chat, userMessage, sendMessage}) => {
         };
     };
 
-
     return (
         <div className="chat">
           <h1>Modem Chat </h1>
@@ -32,12 +31,24 @@ const Chat = ({chat, userMessage, sendMessage}) => {
                 <Link to="/stats" className="button">View Stats</Link>
             </div>
 
-            {/* gets watson data back with a carriage return between each line. .replace(/\u21B5/g,'test') */}
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">
-                    {chat.length === 0 ? ""
-                    : chat.map((msg, index) =>  <div className={msg.type} key={index}> {msg.message}</div>)}
+                
+        {/* {
+        chat.map((msg, index) => {
+        for(var i=0; i<msg.length; i++){
+             <div className= {msg.type} key={index}> {msg.message[i]} </div>
+        }
+        })
+       } */}
+
+       {/* {chat.length === 0 ? ""
+                    : chat.map((msg, index) => <div className={msg.type} key={index}> {msg.message} </div> )}
+                </div> */}
+
+                {chat.length === 0 ? ""
+                    : chat.map((msg, index) => <div key = {index}>{msg.message.map((ms, index) => <div className={msg.type} key={index+"b"}> {ms} </div>)}  </div>)}
                 </div>
             </div>
             {/* get messages */}

@@ -17,7 +17,6 @@
 
 ### TODO
 
-  - Set each line from Watson in a new chat bubble 
   - Export table data to excel upon button click
   - Logout button to clear localstorage
   - Fix 5 minute Watson session timeout that throws message_fail error

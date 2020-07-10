@@ -10,7 +10,8 @@ import store from "../store";
 export const userMessage = (message) => async (dispatch) => {
     try{
         console.log("in userMessage. message = " + message);
-        dispatch({type: INPUT_SUCCESS, payload: message });
+        const array = message.split(/\\n/g);
+        dispatch({type: INPUT_SUCCESS, payload: array });
     }catch(err){
         dispatch({type: INPUT_FAIL });
     };
@@ -35,8 +36,14 @@ export const sendMessage = message => async (dispatch) => {
         console.log("in createMessage");
         const body = {input:message, pID: store.getState().login.loggedIn[1]};
         const res = axios.post("/watson/message", body);
-        dispatch({type: MESSAGE_SUCCESS, payload: (await res).data.output.generic[0].text});
-        console.log((await res).data.output.generic[0]);
+
+        //stringifies return object, removes quotes, 
+        const temp = JSON.stringify((await res).data.output.generic[0].text).replace(/['"]+/g, '');
+        const array = temp.split(/\\n/g);
+        
+        dispatch({type: MESSAGE_SUCCESS, payload: array});
+//        dispatch({type: MESSAGE_SUCCESS, payload: (await res).data.output.generic[0].text});
+
     }catch(err){
         //need to try to get a new session if message fails to post 
         //session_ID expires after 5 minutes of inactivity which throws a message fail error 
