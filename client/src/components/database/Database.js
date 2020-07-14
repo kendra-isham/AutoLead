@@ -64,13 +64,13 @@ const Database = ({getData }) => {
             <br/>
             <button className="button" id="dbButton1" onClick={handleClick}>Display Data</button>
             </div>
-            {/* <ReactToExcel 
+            {/* { <ReactToExcel 
                 //className="button"
                 table="dbTable"
                 filename="modemBot_file"
                 sheet="sheet1"
                 buttonText="Export to Excel"
-            /> */}
+            /> }  */}
         </div>
     );
 };

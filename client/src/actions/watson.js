@@ -22,12 +22,18 @@ export const createSession = () => async (dispatch) => {
     try{
         console.log("in createSession");
         const res = await axios.get("/watson/session");
+        console.log("res.data from createSession(): ");
+        console.log(res.data);
         dispatch({type: SESSION_SUCCESS, payload: res.data});
     }catch(err){
         dispatch({type: SESSION_FAIL});
     }
 };
 
+export const deleteHeaders = () => {
+    delete axios.defaults.headers.common["session_id"];
+    axios.defaults.headers.common["session_id"] = localStorage.session;
+}
 // POST message to the bot 
 
 //this gets a new session ID in the catch block. it matches localstorage and the newly created session id in the server
@@ -37,7 +43,7 @@ export const sendMessage = message => async (dispatch) => {
         const body = {input:message, pID: store.getState().login.loggedIn[1]};
         const res = axios.post("/watson/message", body);
 
-        //stringifies return object, removes quotes, 
+        //stringifies return object, removes quotes, splits on the \n 
         const temp = JSON.stringify((await res).data.output.generic[0].text).replace(/['"]+/g, '');
         const array = temp.split(/\\n/g);
         
@@ -47,15 +53,17 @@ export const sendMessage = message => async (dispatch) => {
     }catch(err){
         //need to try to get a new session if message fails to post 
         //session_ID expires after 5 minutes of inactivity which throws a message fail error 
-            // console.log("in message fail catch about to get")
-            // //this is an infinite loop
-            // store.dispatch(createSession()).then(
-            //     store.dispatch(userMessage(message)).then(
-            //         store.dispatch(sendMessage(message))
-            //     )
-            // )
-        dispatch({type: MESSAGE_FAIL})
-    
+            console.log("in message fail catch about to get")
+            //this is an infinite loop
+            deleteHeaders();
+            store.dispatch(createSession()).then(
+                 store.dispatch(userMessage(message)).then(
+                     store.dispatch(sendMessage(message))
+                 )
+             )
+
+        //dispatch({type: MESSAGE_FAIL})
+      
     };
 };
 

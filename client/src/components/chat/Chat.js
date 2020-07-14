@@ -34,23 +34,13 @@ const Chat = ({chat, userMessage, sendMessage}) => {
             <div className="historyContainer">
                 {/* Handle Messages */}
                 <div className="maxHeight">
-                
-        {/* {
-        chat.map((msg, index) => {
-        for(var i=0; i<msg.length; i++){
-             <div className= {msg.type} key={index}> {msg.message[i]} </div>
-        }
-        })
-       } */}
-
-       {/* {chat.length === 0 ? ""
-                    : chat.map((msg, index) => <div className={msg.type} key={index}> {msg.message} </div> )}
-                </div> */}
-
-                {chat.length === 0 ? ""
-                    : chat.map((msg, index) => <div key = {index}>{msg.message.map((ms, index) => <div className={msg.type} key={index+"b"}> {ms} </div>)}  </div>)}
+                    {chat.length === 0 ? ""
+                        : chat.map((msg, index) => 
+                            <div key = {index}>{msg.message.map((ms, index) => 
+                                <div className={msg.type} key={index+"b"}> {ms} </div>)}  
+                             </div>)}
                 </div>
-            </div>
+           </div>
             {/* get messages */}
             <input id = "chatbox" 
                 onChange={(e) => setMessage(e.target.value)}

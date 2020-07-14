@@ -9,8 +9,6 @@ require("dotenv").config();
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-// const DB = require("../database");
-
 require("dotenv").config();
 
 // creates instance of assistance
@@ -33,6 +31,8 @@ router.get("/session", async (req, res) => {
             assistantId: process.env.WATSON_ASSISTANT_ID
         });
         res.send(session["result"]);
+        console.log("in /session get request: ");
+        console.log(session["result"]);
     }catch(err){
         console.log(process.env.WATSON_ASSISTANT_ID);
         res.send("There was an error connecting");
@@ -40,25 +40,6 @@ router.get("/session", async (req, res) => {
     };
 });
 
-    // DELETE session
-    // probably needs a post request from browser to get session
-router.post("/delete", async (req, res) => {
-    try{
-        const deleteSession = await assistant.deleteSession({
-            assistantId: process.env.WATSON_ASSISTANT_ID,
-            sessionId: req,
-            })
-            .then(res => {
-                console.log(res.result)
-                console.log(JSON.stringify(res.result, null, 2));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        }catch(err){
-            console.error(err);
-        }
-});
 // handle messages
 // connect to and post to database
     //parse the body 
