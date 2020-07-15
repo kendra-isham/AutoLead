@@ -11,6 +11,7 @@ import Routes from './routes';
 if (localStorage.session) {
   delete axios.defaults.headers.common["session_id"];
   axios.defaults.headers.common["session_id"] = localStorage.session;
+  console.log("in app.js checking localStorage if statement")
 } else {
   delete axios.defaults.headers.common["session_id"];
 }
@@ -19,9 +20,10 @@ if (localStorage.session) {
 const App = () => {
   // creates session
   useEffect(() => {
-    if(!localStorage.session){
+  //  if(!localStorage.session){
+      console.log("in app.js useEffect() about to dispatch(createSession())")
       store.dispatch(createSession());
-    }
+  //  }
   });
 
   return (
