@@ -12,11 +12,9 @@ const Chat = ({chat, userMessage, sendMessage}) => {
     const handleClick = async(e) => {
         const code = e.keyCode || e.which;
         if(code === 13){
-            console.log(message + " in click event");
             userMessage(message);
             sendMessage(message);
             setMessage("");
-            console.log("dealing with message complete. back in chat.js")
         };
     };
 
@@ -24,7 +22,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
         <div className="chat">
           <h1>Modem Chat </h1>
           <h5>Please reference the model number for the modem in question.</h5>
-          <h5>I can answer questions about modem creditials, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
+          <h5>I can answer questions about modem creditials, how to configure, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
           <h6>Ex: "Does the DG1670 have wifi?"</h6>
           {/* view stats */}
             <div className="stats">

@@ -65,7 +65,7 @@ router.get("/session", async (req, res) => {
           .then((client) => {
               console.log("connected to the database");
               try{
-                client.db().collection('userInput').insertOne({input: `${req.body.input}`});
+                client.db().collection('userInput').insertOne({pID: `${req.body.pID}`, input: `${req.body.input}`});
                 console.log("userInput added to userInput collection")
               }catch(err){
                   console.error(err);
@@ -124,28 +124,7 @@ router.get("/data", async (req, res) => {
 router.post("/data/pID", async (req, res) => {
     let searchValue = req.body.input;
     console.log(req.body.input);
-    //res.send(searchValue)
     res.json(searchValue)
 });
 
-// router.get("/data/db", async (req, res) => { 
-//     const data = [];   
-//     try{
-//         console.log("get request to database received")
-//         MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }) 
-//         .then((client) => {
-//             //gets the database collection and finds every document 
-//             client.db().collection('messages').find({ "pID" : `${searchValue}`}).forEach( doc => {
-//                     data.push(doc);
-//                 }).then(() => {
-//                     console.log("docs pushed to array")
-//                     res.send(data);
-//                     client.close();
-//                 }) 
-//             })
-//     }catch(err){
-//     console.error(err);
-//     }
-// })
-// export routes
 module.exports = router;

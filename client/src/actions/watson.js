@@ -1,7 +1,7 @@
 // import types
 import { INPUT_SUCCESS, INPUT_FAIL,
          SESSION_SUCCESS, SESSION_FAIL,
-         MESSAGE_SUCCESS, MESSAGE_FAIL,
+         MESSAGE_SUCCESS,
         } from "./types";
 import axios from "axios";
 import store from "../store";
@@ -20,9 +20,7 @@ export const userMessage = (message) => async (dispatch) => {
 // GET a session 
 export const createSession = () => async (dispatch) => {
     try{
-        console.log("in createSession");
         const res = await axios.get("/watson/session");
-        console.log("res.data from createSession(): ");
         console.log(res.data);
         dispatch({type: SESSION_SUCCESS, payload: res.data});
     }catch(err){
@@ -39,7 +37,6 @@ export const createSession = () => async (dispatch) => {
 //this gets a new session ID in the catch block. it matches localstorage and the newly created session id in the server
 export const sendMessage = message => async (dispatch) => {
     try{
-        console.log("in createMessage");
         const body = {input:message, pID: store.getState().login.loggedIn[1]};
         const res = axios.post("/watson/message", body);
 

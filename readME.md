@@ -19,7 +19,7 @@
 
   - Export table data to excel upon button click
   - Logout button to clear localstorage
-  - Fix 5 minute Watson session timeout that throws message_fail error
+  - Fix extra sessionID fetch
   - Integrate into Skype 
   
 ### Installation
