@@ -31,9 +31,11 @@
     padding-bottom: 1em;
     border-radius: 1em;
     margin-top: 1em; 
-    margin-right: 1em;
+    margin-right: 5%;
     display: inline;
     float: right;
+    clear: both;
+
 }
 
 .user {
@@ -45,7 +47,7 @@
 }
 
 .bot {
-    text-align: justify;
+    text-align: left;
     padding-left: 1em;
     padding-right: 1em;
     margin-left: 1em; 
@@ -55,7 +57,7 @@
 .historyContainer {
     padding-bottom: 3em;
     max-height: 30em;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 #chatbox, .loginbox {

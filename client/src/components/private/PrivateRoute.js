@@ -1,8 +1,6 @@
 import React from "react";
 import {Redirect, Route} from "react-router-dom";
 
-//should probably pull loggedIn from store 
-
 const PrivateRoute = ({component: Component, ...rest}) => {
 
     let loggedIn = false;

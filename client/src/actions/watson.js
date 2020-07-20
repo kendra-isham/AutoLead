@@ -1,7 +1,7 @@
 // import types
 import { INPUT_SUCCESS, INPUT_FAIL,
          SESSION_SUCCESS, SESSION_FAIL,
-         MESSAGE_SUCCESS,
+         MESSAGE_SUCCESS, MESSAGE_FAIL
         } from "./types";
 import axios from "axios";
 import store from "../store";
@@ -35,7 +35,9 @@ export const createSession = () => async (dispatch) => {
 // POST message to the bot 
 
 //this gets a new session ID in the catch block. it matches localstorage and the newly created session id in the server
-export const sendMessage = message => async (dispatch) => {
+let counter = 0;
+
+export const sendMessage = message => async (dispatch) => { 
     try{
         const body = {input:message, pID: store.getState().login.loggedIn[1]};
         const res = axios.post("/watson/message", body);
@@ -49,18 +51,18 @@ export const sendMessage = message => async (dispatch) => {
     }catch(err){
         //need to try to get a new session if message fails to post 
         //session_ID expires after 5 minutes of inactivity which throws a message fail error 
-            console.log("in message fail catch about to get")
-            //this works but calls an extra session ID
-            delete axios.defaults.headers.common["session_id"];
-            axios.defaults.headers.common["session_id"] = localStorage.session;
-            store.dispatch(createSession()).then(
-                 //store.dispatch(userMessage(message)).then(
-                     store.dispatch(sendMessage(message))
-                 //)
-            )
-
-        //dispatch({type: MESSAGE_FAIL})
-      
+            counter++;
+            if(counter < 5){
+                //this works but calls an extra session ID
+                delete axios.defaults.headers.common["session_id"];
+                axios.defaults.headers.common["session_id"] = localStorage.session;
+                store.dispatch(createSession()).then(
+                        store.dispatch(sendMessage(message))
+                )
+                //dispatches MESSAGE_FAIL after 5 attempts to catch the error
+            }else{
+                dispatch({type: MESSAGE_FAIL})      
+            }      
     };
 };
 

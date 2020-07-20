@@ -31,8 +31,6 @@ router.get("/session", async (req, res) => {
             assistantId: process.env.WATSON_ASSISTANT_ID
         });
         res.send(session["result"]);
-        console.log("in /session get request: ");
-        console.log(session["result"]);
     }catch(err){
         console.log(process.env.WATSON_ASSISTANT_ID);
         res.send("There was an error connecting");
@@ -110,7 +108,6 @@ router.get("/data", async (req, res) => {
             client.db().collection('messages').find({}).forEach( doc => {
                     data.push(doc);
                 }).then(() => {
-                    console.log("docs pushed to array")
                     res.send(data);
                     client.close();
                 }) 
@@ -119,12 +116,5 @@ router.get("/data", async (req, res) => {
        console.error(err);
    }
 })
-
-//post from browser to get pID needs to go here and the get request needs to be nested 
-router.post("/data/pID", async (req, res) => {
-    let searchValue = req.body.input;
-    console.log(req.body.input);
-    res.json(searchValue)
-});
 
 module.exports = router;

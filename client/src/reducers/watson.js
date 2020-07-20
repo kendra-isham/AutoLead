@@ -18,7 +18,6 @@ export default (state=initialState, action) => {
     switch(type){
         case INPUT_SUCCESS: 
             messages = [...messages, { message:payload, type:"user" }];
-            console.log("inside switch input success");
             return {
                 ...state,
                 messages,
@@ -30,7 +29,6 @@ export default (state=initialState, action) => {
         case SESSION_SUCCESS:
             // stores session ID in localStorage in browser
             localStorage.setItem("session", payload["session_id"]);
-            console.log("inside switch session success");
             return {
                 ...state,
             };
@@ -47,10 +45,8 @@ export default (state=initialState, action) => {
             };
         case MESSAGE_FAIL: 
             alert("Message Fail. Session Expired. Please refresh")
-            //messages = [...messages, {message:"redirect", type:"err"}];
             return {
                 ...state,
-            //    messages
             };
         default:
             return {

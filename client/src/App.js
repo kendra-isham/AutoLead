@@ -19,9 +19,7 @@ if (localStorage.session) {
 const App = () => {
   // creates session
   useEffect(() => {
-  //  if(!localStorage.session){
       store.dispatch(createSession());
-  //  }
   });
 
   return (

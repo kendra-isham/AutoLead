@@ -20,14 +20,12 @@ export default (state=initialState, action) => {
 
         case SIGN_IN_SUCCESS:
             loggedIn = [true, payload];
-            console.log("YOU ARE SIGNED IN");
             return {
                 ...state,
                 loggedIn
             }
         case SIGN_IN_FAIL:
-            loggedIn = [false, payload];
-            console.log("YOU ARE NOT SIGNED IN");  
+            loggedIn = [false, payload]; 
             return {
                 ...state,
                 loggedIn

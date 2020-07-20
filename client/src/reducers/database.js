@@ -12,7 +12,6 @@ export default (state=initialState, action) => {
  switch(type){
 
      case DATABASE_SUCCESS:
-         console.log("DATABASE_SUCCESS")
          db = payload;         
          return {
              ...state,

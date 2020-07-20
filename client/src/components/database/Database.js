@@ -1,4 +1,4 @@
-import React from "react"; //{ useState } from "react";
+import React from "react"; 
 import { connect } from "react-redux";
 import { getData } from "../../actions/database";
 import store from "../../store";
@@ -64,13 +64,6 @@ const Database = ({getData }) => {
             <br/>
             <button className="button" id="dbButton1" onClick={handleClick}>Display Data</button>
             </div>
-            {/* { <ReactToExcel 
-                //className="button"
-                table="dbTable"
-                filename="modemBot_file"
-                sheet="sheet1"
-                buttonText="Export to Excel"
-            /> }  */}
         </div>
     );
 };

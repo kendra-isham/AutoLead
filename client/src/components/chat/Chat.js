@@ -20,7 +20,7 @@ const Chat = ({chat, userMessage, sendMessage}) => {
 
     return (
         <div className="chat">
-          <h1>Modem Chat </h1>
+          <h1>Modem Chat</h1>
           <h5>Please reference the model number for the modem in question.</h5>
           <h5>I can answer questions about modem creditials, how to configure, GUI vs CLI, Homeworld vs IPC, speed compliance, wifi capability, and port forwarding.</h5>
           <h6>Ex: "Does the DG1670 have wifi?"</h6>
@@ -31,13 +31,12 @@ const Chat = ({chat, userMessage, sendMessage}) => {
 
             <div className="historyContainer">
                 {/* Handle Messages */}
-                <div className="maxHeight">
-                    {chat.length === 0 ? ""
-                        : chat.map((msg, index) => 
-                            <div key = {index}>{msg.message.map((ms, index) => 
-                                <div className={msg.type} key={index+"b"}> {ms} </div>)}  
-                             </div>)}
-                </div>
+                {chat.length === 0 ? ""
+                    : chat.map((msg, index) => 
+                        <div key = {index}>
+                            {msg.message.map((ms, index) => 
+                                <div className={msg.type} key={index+"b"}> {ms} </div>) } 
+                        </div>)}
            </div>
             {/* get messages */}
             <input id = "chatbox" 
