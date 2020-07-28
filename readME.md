@@ -47,6 +47,7 @@ Install the dependencies for the client
 ```sh
 $ cd client
 $ npm install
+$ cd ..
 ```
 
 Run the client & server concurrently 
