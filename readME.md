@@ -31,7 +31,6 @@
 Auto Lead was built with [Node.js](https://nodejs.org/) v12.18.2
 
 Set up .env file
-  * I will provide .env file for grading purposes
   * Required .env variables:
     `WATSON_ASSISTANT_APIKEY`
     `WATSON_ASSISTANT_URL`
@@ -57,15 +56,6 @@ $ npm run dev
 Server runs on http://localhost:5000 and client on http://localhost:3000
 
 ### How to use
-- Please login with p0000000 for database tracking purposes. 
-- If "message_fail" alerts, please refresh. 
-- The modem bot can answer a variety of questions about Charter provided internet modems that would be asked by a repair representative during troubleshooting when a customer calls. 
+- Login with PID. 
+- The modem bot can answer a variety of questions about modems that would be asked by a repair representative during troubleshooting when a customer calls. 
     - Questions currently must be formatted with a question topic (ie speed, wifi capability, port forwarding) and a modem model number.
-    - Example Questions: 
-        - "How do I login to the CGNM2250?" 
-        - "Where do I generate the config for TWC?"
-        - "What's the max speed for an E31N2V1?"
-        - "Where do I set up port forwarding for a DDW36C?" 
-        - "Can I port forward 192.168.44.19?"
-        - "How do I configure a DG1670?"
-        - "How do I utilize tunnels?"
